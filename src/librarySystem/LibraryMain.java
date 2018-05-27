@@ -9,7 +9,7 @@ public class LibraryMain {
 		JFrame frame = new JFrame("Library System");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.setSize(400, 400);
+		frame.setSize(500, 500);
 		
 		MotherPanel motherPanel = new MotherPanel();
 		
