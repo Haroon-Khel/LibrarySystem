@@ -14,11 +14,14 @@ public class MotherPanel extends JPanel {
 	}
 	
 	//Instead of adding the subpanels in the constructor, I can add them later. Making it more convenient in the Main class
-	public void addSubPanels (LoginScreen loginScreen, AdminMenu adminMenu, LibrarianMenu librarianMenu) {
+	public void addSubPanels (LoginScreen loginScreen, AdminMenu adminMenu, LibrarianMenu librarianMenu, LibrarianLogin librarianLogin,
+			AdminLogin adminLogin) {
 		
 		this.add(loginScreen, "LoginScreen");
 		this.add(adminMenu, "AdminMenu");
 		this.add(librarianMenu, "LibrarianMenu");
+		this.add(librarianLogin, "LibrarianLogin");
+		this.add(adminLogin, "AdminLogin");
 		
 	}
 	

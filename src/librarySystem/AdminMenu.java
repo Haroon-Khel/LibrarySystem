@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class AdminMenu extends JPanel {
 	
-	private JButton aLib, vLib, dLib;
+	private JButton aLib, vLib, dLib, logout;
 	private MotherPanel motherPanel;
 	
 	public AdminMenu (MotherPanel motherPanel) {
@@ -12,9 +12,11 @@ public class AdminMenu extends JPanel {
 		aLib = new JButton("Add Librarian");
 		vLib = new JButton("View Librarian");
 		dLib = new JButton("Delete Librarian");
+		logout = new JButton("Logout");
 		this.add(aLib);
 		this.add(vLib);
 		this.add(dLib);
+		this.add(logout);
 		/*The Motherpanel supplied will be the motherpanel within this class. This allows this subclass to have
 		 * access to the other subclasses when it needs to during card switching
 		*/

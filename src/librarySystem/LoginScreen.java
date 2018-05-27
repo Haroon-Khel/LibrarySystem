@@ -1,5 +1,6 @@
 package librarySystem;
 
+import java.awt.event.*;
 import javax.swing.*;
 
 public class LoginScreen extends JPanel {
@@ -10,9 +11,11 @@ public class LoginScreen extends JPanel {
 	public LoginScreen (MotherPanel motherPanel) {
 		
 		adminLog = new JButton("Administrator");
-		librarianLog = new JButton("librarian");
+		librarianLog = new JButton("Librarian");
 		this.add(adminLog);
 		this.add(librarianLog);
+		adminLog.addActionListener(new AdministratorLogin());
+		librarianLog.addActionListener(new LibrarianLogin());
 		/*The Motherpanel supplied will be the motherpanel within this class. This allows this subclass to have
 		 * access to the other subclasses when it needs to during card switching
 		*/
@@ -20,6 +23,27 @@ public class LoginScreen extends JPanel {
 		
 	}
 	
+	private class AdministratorLogin implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			motherPanel.card.show(motherPanel, "AdminLogin");
+			
+		}
+		
+	}
+	
+	private class LibrarianLogin implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			motherPanel.card.show(motherPanel, "LibrarianLogin");
+			
+		}
+		
+	}
 
 }
 

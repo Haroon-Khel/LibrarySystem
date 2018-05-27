@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class LibrarianMenu extends JPanel {
 	
-	private JButton addBooks, viewBooks, issueBooks, viewIssuedBooks, returnBooks;
+	private JButton addBooks, viewBooks, issueBooks, viewIssuedBooks, returnBooks, logout;
 	private MotherPanel motherPanel;
 	
 	public LibrarianMenu (MotherPanel motherPanel) {
@@ -14,11 +14,13 @@ public class LibrarianMenu extends JPanel {
 		issueBooks = new JButton("Issue Books");
 		viewIssuedBooks = new JButton("View Issued Books");
 		returnBooks = new JButton("Return Books");
+		logout = new JButton("Logout");
 		this.add(addBooks);
 		this.add(viewBooks);
 		this.add(issueBooks);
 		this.add(viewIssuedBooks);
 		this.add(returnBooks);
+		this.add(logout);
 		/*The Motherpanel supplied will be the motherpanel within this class. This allows this subclass to have
 		 * access to the other subclasses when it needs to during card switching
 		*/

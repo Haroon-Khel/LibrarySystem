@@ -1,6 +1,5 @@
 package librarySystem;
 
-import java.awt.CardLayout;
 import javax.swing.*;
 
 public class LibraryMain {
@@ -17,8 +16,10 @@ public class LibraryMain {
 		LoginScreen loginScreen = new LoginScreen(motherPanel);
 		AdminMenu adminMenu = new AdminMenu(motherPanel);
 		LibrarianMenu librarianMenu = new LibrarianMenu(motherPanel);
+		AdminLogin adminLogin = new AdminLogin(motherPanel);
+		LibrarianLogin librarianLogin = new LibrarianLogin(motherPanel);
 		
-		motherPanel.addSubPanels(loginScreen, adminMenu, librarianMenu);
+		motherPanel.addSubPanels(loginScreen, adminMenu, librarianMenu, librarianLogin, adminLogin);
 		
 		frame.add(motherPanel);
 
