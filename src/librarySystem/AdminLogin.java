@@ -10,6 +10,7 @@ public class AdminLogin extends JPanel {
 	private MotherPanel motherPanel;
 	private JButton back, login;
 	private JTextField username, password;
+	private JLabel title;
 	
 	public AdminLogin (MotherPanel motherPanel) {
 		
@@ -17,22 +18,31 @@ public class AdminLogin extends JPanel {
 		login = new JButton("Login");
 		username = new JTextField();
 		password = new JTextField();
+		title = new JLabel("Administrator Login");
 		setTextFieldProperties(username);
 		setTextFieldProperties(password);
 		this.add(back);
 		this.add(login);
 		this.add(username);
 		this.add(password);
+		this.add(title);
 		this.motherPanel = motherPanel;
 		back.addActionListener(new BackToLoginScreen());
 		login.addActionListener(new LoginButton());
 		
 	}
 	
+	public void clearTextFields() {
+		
+		username.setText("");
+		password.setText("");
+		
+	}
+	
 	private void setTextFieldProperties (JTextField textfield) {
 		
 		textfield.setBackground(Color.WHITE);
-		textfield.setPreferredSize(new Dimension(300, 40));
+		textfield.setPreferredSize(new Dimension(300, 30));
 		textfield.setEnabled(true);
 		textfield.setHorizontalAlignment(JTextField.LEFT);
 		textfield.setDisabledTextColor(Color.BLACK);
@@ -43,6 +53,7 @@ public class AdminLogin extends JPanel {
 		
 		public void actionPerformed (ActionEvent e) {
 			
+			clearTextFields();
 			motherPanel.card.show(motherPanel, "LoginScreen");
 			
 		}
@@ -61,6 +72,7 @@ public class AdminLogin extends JPanel {
 			
 			if (authenticate(usernameText, passwordText)) {
 				
+				clearTextFields();
 				motherPanel.card.show(motherPanel, "AdminMenu");
 				
 			}
@@ -111,9 +123,19 @@ public class AdminLogin extends JPanel {
 				
 			}
 			
+			catch (SQLException s) {
+				
+				/*
+				 * Catch any SQL exception
+				 */
+				
+			}
+			
 			catch (Exception e) {
 				e.printStackTrace();
 			}
+
+			
 			//To close all connection incase of an exception. Good practice depsite the fact that the Garbage collector does it anyway
 			finally {
 				
