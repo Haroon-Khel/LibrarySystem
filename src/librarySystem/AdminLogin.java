@@ -32,7 +32,7 @@ public class AdminLogin extends JPanel {
 		
 	}
 	
-	public void clearTextFields() {
+	public void clearTextFields () {
 		
 		username.setText("");
 		password.setText("");
@@ -73,6 +73,8 @@ public class AdminLogin extends JPanel {
 			if (authenticate(usernameText, passwordText)) {
 				
 				clearTextFields();
+				AdminMenu adminMenu = new AdminMenu(motherPanel, usernameText);
+				motherPanel.add(adminMenu, "AdminMenu");
 				motherPanel.card.show(motherPanel, "AdminMenu");
 				
 			}
@@ -111,8 +113,7 @@ public class AdminLogin extends JPanel {
 				//Reading return statement
 				
 				while (rs.next()) {
-					
-		//			usernameData = rs.getString("user");
+
 					passwordData = rs.getString("password");
 					
 				}

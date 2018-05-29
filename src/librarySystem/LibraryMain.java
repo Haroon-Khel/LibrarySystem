@@ -14,12 +14,10 @@ public class LibraryMain {
 		MotherPanel motherPanel = new MotherPanel();
 		
 		LoginScreen loginScreen = new LoginScreen(motherPanel);
-		AdminMenu adminMenu = new AdminMenu(motherPanel);
-		LibrarianMenu librarianMenu = new LibrarianMenu(motherPanel);
 		AdminLogin adminLogin = new AdminLogin(motherPanel);
 		LibrarianLogin librarianLogin = new LibrarianLogin(motherPanel);
 		
-		motherPanel.addSubPanels(loginScreen, adminMenu, librarianMenu, librarianLogin, adminLogin);
+		motherPanel.addSubPanels(loginScreen, librarianLogin, adminLogin);
 		
 		frame.add(motherPanel);
 

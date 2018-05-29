@@ -9,12 +9,12 @@ public class AdminMenu extends JPanel {
 	private MotherPanel motherPanel;
 	private JLabel title;
 	
-	public AdminMenu (MotherPanel motherPanel) {
+	public AdminMenu (MotherPanel motherPanel, String administrator) {
 		
 		aLib = new JButton("Add Librarian");
 		vLib = new JButton("View Librarian");
 		dLib = new JButton("Delete Librarian");
-		title = new JLabel("Administrator Menu");
+		title = new JLabel("Administrator Menu. Welcome back " + administrator);
 		logout = new JButton("Logout");
 		logout.addActionListener(new LogoutAction());
 		this.add(aLib);
@@ -29,11 +29,18 @@ public class AdminMenu extends JPanel {
 		
 	}
 	
+	private void removeFromMother () {
+		
+		motherPanel.remove(this);
+		
+	}
+	
 	private class LogoutAction implements ActionListener {
 		
 		public void actionPerformed (ActionEvent e) {
 			
 			motherPanel.card.show(motherPanel, "AdminLogin");
+			removeFromMother();
 			
 		}
 		

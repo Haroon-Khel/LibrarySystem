@@ -73,6 +73,8 @@ public class LibrarianLogin extends JPanel {
 			if (authenticate(usernameText, passwordText)) {
 				
 				clearTextFields();
+				LibrarianMenu librarianMenu = new LibrarianMenu(motherPanel, usernameText);
+				motherPanel.add(librarianMenu, "LibrarianMenu");
 				motherPanel.card.show(motherPanel, "LibrarianMenu");
 				
 			}
@@ -112,7 +114,6 @@ public class LibrarianLogin extends JPanel {
 				
 				while (rs.next()) {
 					
-		//			usernameData = rs.getString("username");
 					passwordData = rs.getString("password");
 					
 				}
