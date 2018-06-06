@@ -1,5 +1,6 @@
 package librarySystem;
 
+import java.awt.Dimension;
 import javax.swing.*;
 
 public class LibraryMain {
@@ -9,17 +10,18 @@ public class LibraryMain {
 		JFrame frame = new JFrame("Library System");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.setSize(500, 500);
-		
+
 		MotherPanel motherPanel = new MotherPanel();
+		frame.add(motherPanel);	
+		frame.setSize(new Dimension(500, 500));
+		frame.setMinimumSize(new Dimension(500, 500));
 		
 		LoginScreen loginScreen = new LoginScreen(motherPanel);
 		AdminLogin adminLogin = new AdminLogin(motherPanel);
 		LibrarianLogin librarianLogin = new LibrarianLogin(motherPanel);
 		
 		motherPanel.addSubPanels(loginScreen, librarianLogin, adminLogin);
-		
-		frame.add(motherPanel);
+
 
 	}
 
