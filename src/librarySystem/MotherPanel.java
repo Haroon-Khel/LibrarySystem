@@ -18,13 +18,10 @@ public class MotherPanel extends JPanel {
 			AdminLogin adminLogin) {
 		
 		this.add(loginScreen, "LoginScreen");
-//		this.add(adminMenu, "AdminMenu");
-//		this.add(librarianMenu, "LibrarianMenu");
 		this.add(librarianLogin, "LibrarianLogin");
 		this.add(adminLogin, "AdminLogin");
 		
 	}
-	
 
 }
 

@@ -25,7 +25,6 @@ public class LoginScreen extends JPanel {
 	
 	private class AdministratorLogin implements ActionListener {
 		
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			motherPanel.card.show(motherPanel, "AdminLogin");
@@ -36,7 +35,6 @@ public class LoginScreen extends JPanel {
 	
 	private class LibrarianLogin implements ActionListener {
 
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			motherPanel.card.show(motherPanel, "LibrarianLogin");
