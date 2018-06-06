@@ -109,10 +109,6 @@ public class AddLibrarian extends JPanel {
 		finally {
 			
 			try {
-				System.out.println("Hello");
-				if (!(rs == null)) {
-					rs.close();
-				}
 
 				state.close();
 				conn.close();

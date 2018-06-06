@@ -7,6 +7,7 @@ public class LoginScreen extends JPanel {
 	
 	private JButton adminLog, librarianLog;
 	private MotherPanel motherPanel;
+	private JLabel title = new JLabel("Login Screen");
 	
 	public LoginScreen (MotherPanel motherPanel) {
 		
@@ -14,6 +15,7 @@ public class LoginScreen extends JPanel {
 		librarianLog = new JButton("Librarian");
 		this.add(adminLog);
 		this.add(librarianLog);
+		this.add(title);
 		adminLog.addActionListener(new AdministratorLogin());
 		librarianLog.addActionListener(new LibrarianLogin());
 		/*The Motherpanel supplied will be the motherpanel within this class. This allows this subclass to have
