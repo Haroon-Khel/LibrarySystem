@@ -22,6 +22,7 @@ public class AdminMenu extends JPanel {
 		this.add(logout);
 		this.add(title);
 		this.administrator = administrator;
+		vLib.addActionListener(new VLib());
 		/*The Motherpanel supplied will be the motherpanel within this class. This allows this subclass to have
 		 * access to the other subclasses when it needs to during card switching
 		*/
@@ -68,6 +69,10 @@ public class AdminMenu extends JPanel {
 	private class VLib implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
+			
+			ViewLibrarian viewLibrarian = new ViewLibrarian(motherPanel);
+			motherPanel.add(viewLibrarian, "ViewLibrarian");
+			motherPanel.card.show(motherPanel, "ViewLibrarian");
 			
 		}
 		
