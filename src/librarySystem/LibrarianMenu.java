@@ -20,6 +20,7 @@ public class LibrarianMenu extends JPanel {
 		returnBooks = new JButton("Return Books");
 		logout = new JButton("Logout");
 		logout.addActionListener(new LogoutAction());
+		addBooks.addActionListener(new AddBooksAction());
 		title = new JLabel("Librarian Menu. Welcome back " + librarian);
 		this.add(addBooks);
 		this.add(viewBooks);
@@ -48,6 +49,18 @@ public class LibrarianMenu extends JPanel {
 			
 			motherPanel.card.show(motherPanel, "LibrarianLogin");
 			removeFromMother();
+			
+		}
+		
+	}
+	
+	private class AddBooksAction implements ActionListener {
+
+		public void actionPerformed(ActionEvent arg0) {
+			
+			AddBooks addBooks = new AddBooks(motherPanel);
+			motherPanel.add(addBooks, "AddBooks");
+			motherPanel.card.show(motherPanel, "AddBooks");
 			
 		}
 		

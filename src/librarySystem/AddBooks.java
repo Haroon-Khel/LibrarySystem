@@ -3,6 +3,8 @@ package librarySystem;
 import javax.swing.*;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.*;
 import java.sql.*;
 
@@ -24,6 +26,8 @@ public class AddBooks extends JPanel {
 		count = new JTextField();
 		setTextFieldProperties(name, author, count);
 		addMultipleComponents(title, add, cancel, name, author, count);
+		add.addActionListener(new AddAction());
+		cancel.addActionListener(new CancelAction());
 		
 	}
 	
@@ -128,10 +132,47 @@ public class AddBooks extends JPanel {
 		
 	}
 	
+	private void removeFromMother () {
+		
+		motherPanel.remove(this);
+		
+	}
 	
+	private void clearTextFields () {
+		
+		name.setText("");
+		author.setText("");
+		count.setText("");
+		
+	}	
 	
+	private class AddAction implements ActionListener {
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			if (textFieldData(name, author, count)) {
+				
+				updateBooksInventoryTable();
+				System.out.printf("%nName: %-10s%nAuthor: %-10s%nCount: %-10s", name.getText(), author.getText(), count.getText());
+				clearTextFields();
+				
+			}
+			
+		}
+		
+	}
 	
+	private class CancelAction implements ActionListener {
 
+		public void actionPerformed(ActionEvent e) {
+			
+			clearTextFields();
+			motherPanel.card.show(motherPanel, "LibrarianMenu");
+			removeFromMother();
+			
+		}
+		
+	}
 }
 
 /* 
