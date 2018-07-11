@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ViewLibrarian extends JPanel {
 	
@@ -44,6 +45,9 @@ public class ViewLibrarian extends JPanel {
 		Connection conn = null;
 		Statement state = null;
 		ResultSet rs = null;
+	//	ArrayList<ArrayList<String>> listOfLists = null;
+	//	ArrayList<String> arrayList = null;
+		int index = 0;
 		
 		String passwordData = null;
 		
@@ -65,7 +69,10 @@ public class ViewLibrarian extends JPanel {
 			System.out.printf("%-15s %s%n%n", "Username", "Password");
 			
 			while (rs.next()) {
-
+				
+	//			arrayList.add(0, rs.getString("username"));
+	//			arrayList.add(1, rs.getString("password"));
+	//			listOfLists.add(arrayList);
 				System.out.printf("%-15s %s%n", rs.getString("username"), rs.getString("password"));
 				
 			}

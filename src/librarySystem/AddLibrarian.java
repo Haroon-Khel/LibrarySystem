@@ -46,7 +46,7 @@ public class AddLibrarian extends JPanel {
 		}
 	}
 	
-	public void addMultipleComponents (Component... components) {
+	private void addMultipleComponents (Component... components) {
 		
 		for (Component component:components) {
 			this.add(component);
@@ -68,7 +68,6 @@ public class AddLibrarian extends JPanel {
 		pass = password.getText();
 		Connection conn = null;
 		Statement state = null;
-		ResultSet rs = null;
 		String userInput = "'" + user + "'";
 		String passInput = "'" + pass + "'";
  		
