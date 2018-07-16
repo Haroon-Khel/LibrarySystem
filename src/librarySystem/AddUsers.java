@@ -1,33 +1,54 @@
 package librarySystem;
 
-import javax.swing.*;
-
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
 import java.sql.*;
+import javax.swing.*;
 
-public class AddBooks extends JPanel {
+public class AddUsers extends JPanel {
 	
-	private JButton add, cancel;
+	private JLabel title;
+	private JTextField name, dob, address;
+	private JButton ok, cancel;
 	private MotherPanel motherPanel;
-	private JLabel title = new JLabel("Add Book");
-	private JTextField name, author, count;	
-	private String authorEntry, nameEntry, countEntry;
+	private String nameEntry, dobEntry, addressEntry;
 	
-	public AddBooks (MotherPanel motherPanel) {
+	public AddUsers (MotherPanel motherPanel) {
 		
-		add = new JButton("Add Book");
-		cancel = new JButton("Cancel");
 		this.motherPanel = motherPanel;
+		title = new JLabel("Add User");
+		ok = new JButton("OK");
+		cancel = new JButton("Cancel");
 		name = new JTextField();
-		author = new JTextField();
-		count = new JTextField();
-		setTextFieldProperties(name, author, count);
-		addMultipleComponents(title, add, cancel, name, author, count);
-		add.addActionListener(new AddAction());
+		dob = new JTextField();
+		address = new JTextField();
+		ok.addActionListener(new OkAction());
 		cancel.addActionListener(new CancelAction());
+		addMultipleComponents(title, name, dob, address, ok, cancel);
+		setTextFieldProperties(name, dob, address);
+		
+	}
+	
+	private void addMultipleComponents (Component... components) {
+		
+		for (Component component:components) {
+			this.add(component);
+		}
+		
+	}
+	
+	private void removeFromMother() {
+		
+		motherPanel.remove(this);
+		
+	}
+	
+	private void clearTextFields () {
+		
+		name.setText("");
+		dob.setText("");
+		address.setText("");
 		
 	}
 	
@@ -44,15 +65,6 @@ public class AddBooks extends JPanel {
 		}
 	}
 	
-	private void addMultipleComponents (Component... components) {
-		
-		for (Component component:components) {
-			this.add(component);
-		}
-		
-	}
-	
-	//Returns true if all three text fields are non empty
 	private boolean textFieldData (JTextField... textfields) {
 
 		boolean answer = true;
@@ -71,16 +83,16 @@ public class AddBooks extends JPanel {
 	}
 	
 	//mysql call to update table with name, author and count
-	private void updateBooksInventoryTable () {
+	private void updateUsers () {
 		
 		nameEntry = name.getText();
-		authorEntry = author.getText();
-		countEntry = count.getText();
+		dobEntry = dob.getText();
+		addressEntry = address.getText();
 		Connection conn = null;
 		Statement state = null;
 		String nameInput = "'" + nameEntry + "'";
-		String authorInput = "'" + authorEntry + "'";
-		String countInput = "'" + countEntry + "'";
+		String dobInput = "'" + dobEntry + "'";
+		String addressInput = "'" + addressEntry + "'";
  		
 		try {
 			
@@ -88,7 +100,7 @@ public class AddBooks extends JPanel {
 			String path = "jdbc:mysql://localhost:3306/library_system";
 			String sqlUser = "root";
 			String sqlPassword = "Buck5sac568@";
-			String sqlStatement = "insert into Books_inventory " + "values (" + nameInput + ", " + authorInput + ", " + countInput + ")";
+			String sqlStatement = "insert into Users " + "values (" + nameInput + ", " + dobInput + ", " + addressInput + ")";
 			
 			Class.forName(classForName);
 			conn = DriverManager.getConnection(path, sqlUser, sqlPassword);
@@ -132,51 +144,37 @@ public class AddBooks extends JPanel {
 		
 	}
 	
-	private void removeFromMother () {
-		
-		motherPanel.remove(this);
+	private class CancelAction implements ActionListener {
+
+		public void actionPerformed(ActionEvent arg0) {
+			
+			motherPanel.card.show(motherPanel, "ViewUsers");
+			removeFromMother();
+			clearTextFields();
+			
+		}
 		
 	}
 	
-	private void clearTextFields () {
-		
-		name.setText("");
-		author.setText("");
-		count.setText("");
-		
-	}	
-	
-	private class AddAction implements ActionListener {
-		
+	private class OkAction implements ActionListener {
+
 		public void actionPerformed(ActionEvent e) {
 			
-			if (textFieldData(name, author, count)) {
+			if (textFieldData(name, dob, address)) {
 				
-				updateBooksInventoryTable();
-				System.out.printf("%nAdded:%n%nName: %-10s%nAuthor: %-10s%nCount: %-10s", name.getText(), author.getText(), count.getText());
+				updateUsers();
+				System.out.printf("%nAdded:%n%nName: %-10s%nDOB: %-10s%nAddress: %-10s", name.getText(), dob.getText(), address.getText());
 				clearTextFields();
 				
 			}
 			
 		}
-		
 	}
 	
-	private class CancelAction implements ActionListener {
+	
 
-		public void actionPerformed(ActionEvent e) {
-			
-			clearTextFields();
-			motherPanel.card.show(motherPanel, "LibrarianMenu");
-			removeFromMother();
-			
-		}
-		
-	}
 }
 
-/* 
- * A jtextbox for each of the columns in Book_inventory: Name, count, author
- * 2 buttons: Add book and cancel
- * 
- */
+/*  
+ * 3 TextFields, 2 buttons: ok and cancel, 1 title
+*/

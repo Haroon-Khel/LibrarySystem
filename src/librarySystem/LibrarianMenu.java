@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class LibrarianMenu extends JPanel {
 	
-	private JButton addBooks, viewBooks, issueBooks, viewIssuedBooks, returnBooks, logout;
+	private JButton addBooks, viewBooks, issueBooks, viewIssuedBooks, returnBooks, viewUsers, logout;
 	private MotherPanel motherPanel;
 	private JLabel title;
 	
@@ -18,10 +18,13 @@ public class LibrarianMenu extends JPanel {
 		issueBooks = new JButton("Issue Books");
 		viewIssuedBooks = new JButton("View Issued Books");
 		returnBooks = new JButton("Return Books");
+		viewUsers = new JButton("View Users");
 		logout = new JButton("Logout");
 		logout.addActionListener(new LogoutAction());
 		addBooks.addActionListener(new AddBooksAction());
+		viewUsers.addActionListener(new UsersAction());
 		title = new JLabel("Librarian Menu. Welcome back " + librarian);
+		this.add(viewUsers);
 		this.add(addBooks);
 		this.add(viewBooks);
 		this.add(issueBooks);
@@ -61,6 +64,18 @@ public class LibrarianMenu extends JPanel {
 			AddBooks addBooks = new AddBooks(motherPanel);
 			motherPanel.add(addBooks, "AddBooks");
 			motherPanel.card.show(motherPanel, "AddBooks");
+			
+		}
+		
+	}
+	
+	private class UsersAction implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			
+			ViewUsers viewUsers = new ViewUsers(motherPanel);
+			motherPanel.add(viewUsers, "ViewUsers");
+			motherPanel.card.show(motherPanel, "ViewUsers");
 			
 		}
 		

@@ -49,7 +49,6 @@ public class ViewLibrarian extends JPanel {
 	//	ArrayList<String> arrayList = null;
 		int index = 0;
 		
-		String passwordData = null;
 		
 		try {
 			
